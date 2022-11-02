@@ -9,6 +9,7 @@ using school_control_net.DbContexts;
 
 namespace school_control_net.OData
 {
+    [Route("[controller]")]
     public class ODataBaseController<TEntity> : ODataController
         where TEntity : class
     {

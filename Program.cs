@@ -24,6 +24,8 @@ builder.Services.AddMediatR(typeof(CreateClassCommand).Assembly);
 builder.Services.AddDbContext<SchoolDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("SchoolConnection")));
 
 builder.Services.AddScoped<IClassesService,ClassesService>();
+builder.Services.AddScoped<ITeacherService,TeacherService>();
+builder.Services.AddScoped<IStudentService,StudentService>();
 
 var app = builder.Build();
 
@@ -48,6 +50,10 @@ static IEdmModel GetEdmModel()
     builder.EnableLowerCamelCase();
 
     builder.EntitySet<Classes>("Classes")
+        .EntityType.Count().Filter().OrderBy().Expand().Select().Page(100, 100);
+    builder.EntitySet<Teacher>("Teacher")
+        .EntityType.Count().Filter().OrderBy().Expand().Select().Page(100, 100);
+    builder.EntitySet<Student>("Student")
         .EntityType.Count().Filter().OrderBy().Expand().Select().Page(100, 100);
 
     return builder.GetEdmModel();

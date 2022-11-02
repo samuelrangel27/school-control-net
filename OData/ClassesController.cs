@@ -8,7 +8,6 @@ using school_control_net.Entities;
 
 namespace school_control_net.OData
 {
-      [Route("[controller]")]
       public class ClassesController : ODataBaseController<Classes>
       {
             public ClassesController(SchoolDbContext dbContext, 

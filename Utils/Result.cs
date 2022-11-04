@@ -75,9 +75,9 @@ namespace school_control_net.Utils
         /// Creates an error Result object with no data to return.
         /// </summary>
         /// <param name="message">Message of the response. It will be added to the errors list</param>
-        /// <param name="state">Http status code of the error. Default status code is 409(Conflict)</param>
+        /// <param name="state">Http status code of the error. Default status code is 400(Bad Request)</param>
         /// <returns></returns>
-        public static Result<T> Fail(string message, HttpStatusCode state = HttpStatusCode.Conflict)
+        public static Result<T> Fail(string message, HttpStatusCode state = HttpStatusCode.BadRequest)
         {
             var result = new Result<T>(null, message, state);
             result.Errors = new List<string> { message };
@@ -89,9 +89,9 @@ namespace school_control_net.Utils
         /// </summary>
         /// <param name="message">Message of the response</param>
         /// <param name="errors">List of strings with all the errors to pass to the caller</param>
-        /// <param name="state">Http status code of the error. Default status code is 409(Conflict)</param>
+        /// <param name="state">Http status code of the error. Default status code is 400(Bad request)</param>
         /// <returns></returns>
-        public static Result<T> Fail(string message, IEnumerable<string> errors, HttpStatusCode state = HttpStatusCode.Conflict)
+        public static Result<T> Fail(string message, IEnumerable<string> errors, HttpStatusCode state = HttpStatusCode.BadRequest)
         {
             var result = Fail(message, state);
             if (errors.Count() > 0)
@@ -105,7 +105,7 @@ namespace school_control_net.Utils
         /// <param name="message">Message of the response</param>
         /// <param name="errors">List of strings with all the errors to pass to the caller</param>
         /// <param name="data">Data object to be returned</param>
-        /// <param name="state">Http status code of the error. Default status code is 409(Conflict)</param>
+        /// <param name="state">Http status code of the error. Default status code is 400(Bad requst)</param>
         /// <returns></returns>
         public static Result<T> Fail(string message, IEnumerable<string> errors, T data, HttpStatusCode state = HttpStatusCode.BadRequest)
         {

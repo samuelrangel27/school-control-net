@@ -26,7 +26,7 @@ namespace school_control_net.Commands.Teachers
 
             public async Task<Result<Teacher>> Handle(CreateTeacherCommand request, CancellationToken cancellationToken)
             {
-                  return await this.teacherService.save(request);
+                  return await this.teacherService.add(request);
             }
       }
 }

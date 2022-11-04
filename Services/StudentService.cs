@@ -18,7 +18,7 @@ namespace school_control_net.Services
             {
                   this.dbContext = dbContext;
             }
-            public async Task<Result<Student>> save(CreateStudentCommand student)
+            public async Task<Result<Student>> add(CreateStudentCommand student)
             {
                   var newStudent = new Student{
                         Name = student.Name,

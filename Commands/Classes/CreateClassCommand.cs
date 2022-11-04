@@ -26,7 +26,7 @@ namespace school_control_net.Commands.Classes
             
             public async Task<Result<ent.Classes>> Handle(CreateClassCommand request, CancellationToken cancellationToken)
             {
-                  return await this.classesService.save(request);
+                  return await this.classesService.add(request);
             }
       }
 

@@ -10,6 +10,6 @@ namespace school_control_net.Services.Interfaces
 {
     public interface IStudentService
     {
-        Task<Result<Student>> save(CreateStudentCommand classInput);
+        Task<Result<Student>> add(CreateStudentCommand classInput);
     }
 }

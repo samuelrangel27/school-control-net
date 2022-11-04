@@ -26,6 +26,7 @@ builder.Services.AddDbContext<SchoolDbContext>(opt => opt.UseSqlServer(builder.C
 builder.Services.AddScoped<IClassesService,ClassesService>();
 builder.Services.AddScoped<ITeacherService,TeacherService>();
 builder.Services.AddScoped<IStudentService,StudentService>();
+builder.Services.AddScoped<ISchoolCycleService,SchoolCycleService>();
 
 var app = builder.Build();
 

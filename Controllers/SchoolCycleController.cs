@@ -17,5 +17,9 @@ namespace school_control_net.Controllers
             [HttpPost]
             public async Task<ActionResult> post(CreateCycleCommand command) 
                   => await ProcessCommandAsync(command);
+
+            [HttpPut("open")]
+            public async Task<ActionResult> open(OpenSchoolCycleCommand command) 
+                  => await ProcessCommandAsync(command);
       }
 }

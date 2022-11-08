@@ -56,6 +56,8 @@ static IEdmModel GetEdmModel()
         .EntityType.Count().Filter().OrderBy().Expand().Select().Page(100, 100);
     builder.EntitySet<Student>("Student")
         .EntityType.Count().Filter().OrderBy().Expand().Select().Page(100, 100);
+    builder.EntitySet<SchoolCycle>("SchoolCycle")
+        .EntityType.Count().Filter().OrderBy().Expand().Select().Page(100, 100);
 
     return builder.GetEdmModel();
 }

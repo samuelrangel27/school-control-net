@@ -11,6 +11,6 @@ namespace school_control_net.Services.Interfaces
     public interface ISchoolCycleService
     {
         Task<Result<SchoolCycle>> add(CreateCycleCommand cycle);
-        
+        Task<Result<SchoolCycle>> open();
     }
 }

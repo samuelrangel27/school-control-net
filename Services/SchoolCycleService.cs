@@ -53,5 +53,24 @@ namespace school_control_net.Services
             await context.SaveChangesAsync();
             return Result<SchoolCycle>.Ok(MsgConstants.SUCCESS,newCycle);
         }
-    }
+
+        public async Task<Result<SchoolCycle>> open()
+        {
+            var openCycle = context.SchoolCycles.FirstOrDefault(x => x.Status == SchoolCycleStatus.Open);
+            if(openCycle != null)
+                return Result<SchoolCycle>
+                    .Fail($"School cycle with start date {openCycle.StartDate.ToString("dd/MM/yyyy")} is still open");
+
+            var cycle = context.SchoolCycles
+                .FirstOrDefault(x => x.Status == SchoolCycleStatus.New);
+            if(cycle == null)
+                return Result<SchoolCycle>.Fail("There is no school cycle with status New");
+            
+            cycle.Status = SchoolCycleStatus.Open;
+            context.Update(cycle);
+            await context.SaveChangesAsync();
+            
+            return Result<SchoolCycle>.Ok(MsgConstants.SUCCESS, cycle);
+        }
+      }
 }

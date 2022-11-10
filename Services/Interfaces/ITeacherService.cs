@@ -11,5 +11,6 @@ namespace school_control_net.Services.Interfaces
     public interface ITeacherService
     {
         Task<Result<Teacher>> add(CreateTeacherCommand classInput);
+        Result<Teacher> GetbyId(int id);
     }
 }

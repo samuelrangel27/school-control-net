@@ -33,6 +33,11 @@ namespace school_control_net.Utils
         public bool IsError => State != HttpStatusCode.OK;
 
         /// <summary>
+        /// Validates if the response on the object is success. Status == 200
+        /// </summary>
+        public bool IsSuccess => State == HttpStatusCode.OK;
+
+        /// <summary>
         /// List of strings with all the errors if any. On front end we should always use this error array.
         /// </summary>
         public IEnumerable<string> Errors { get; set; } = new List<string> { };

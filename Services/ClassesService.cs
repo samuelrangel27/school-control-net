@@ -28,5 +28,14 @@ namespace school_control_net.Services
                   await dbContext.SaveChangesAsync();
                   return Result<Classes>.Ok(MsgConstants.SUCCESS, newClass);
             }
+
+            public Result<Classes> GetById(int id)
+            {
+                  var classes = dbContext.Classes.FirstOrDefault(x => x.Id == id);
+                  if(classes != null)
+                        return Result<Classes>.Ok(MsgConstants.SUCCESS, classes);
+                  else
+                        return Result<Classes>.Fail(string.Format(MsgConstants.NOTFOUND_WITH_ID, "Class", id));
+            }
       }
 }

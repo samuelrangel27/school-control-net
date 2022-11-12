@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using school_control_net.Commands.Teachers;
 using school_control_net.DbContexts;
 using school_control_net.Entities;
+using school_control_net.Models.Teachers;
 using school_control_net.Services.Interfaces;
 using school_control_net.Utils;
 
@@ -18,7 +19,7 @@ namespace school_control_net.Services
             {
                   this.dbContext = dbContext;
             }
-            public async Task<Result<Teacher>> add(CreateTeacherCommand teacher)
+            public async Task<Result<Teacher>> add(TeacherInput teacher)
             {
                   var newTeacher = new Teacher{
                         Name = teacher.Name,

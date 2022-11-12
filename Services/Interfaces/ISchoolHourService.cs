@@ -2,14 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using school_control_net.Entities;
-using school_control_net.Models.Courses;
+using school_control_net.Models.SchoolHours;
 using school_control_net.Utils;
 
 namespace school_control_net.Services.Interfaces
 {
-    public interface ICourseService
+    public interface ISchoolHourService
     {
-        Task<Result<Course>> add(CourseInput course);
+        Result<List<ISchoolHour>> ValidateHours(IEnumerable<ISchoolHour> hours, int maxHours);
     }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using school_control_net.Commands.Courses;
 using school_control_net.DbContexts;
 using school_control_net.Entities;
+using school_control_net.Models.Courses;
 using school_control_net.Services.Interfaces;
 using school_control_net.Utils;
 
@@ -15,17 +16,20 @@ namespace school_control_net.Services
         private readonly SchoolDbContext context;
         private readonly ITeacherService teacherService;
         private readonly IClassesService classesService;
+        private readonly ISchoolHourService schoolHourService;
 
         public CourseService(SchoolDbContext context,
             ITeacherService teacherService,
+            ISchoolHourService schoolHourService,
             IClassesService classesService)
         {
+            this.schoolHourService = schoolHourService;
             this.classesService = classesService;
             this.teacherService = teacherService;
             this.context = context;
         }
         
-        public async Task<Result<Course>> add(CreateCourseCommand course)
+        public async Task<Result<Course>> add(CourseInput course)
         {
             // get open cycle
             var openCycle = context.SchoolCycles.FirstOrDefault(x => x.Status == SchoolCycleStatus.Open);
@@ -55,6 +59,23 @@ namespace school_control_net.Services
             else
                 errors.Add(classResult.Message);
             
+            if(course.SchoolHours.Any())
+            {
+                var schoolHoursValidationResult = schoolHourService.ValidateHours(course.SchoolHours,newCourse.Class.WeeklyHours);
+                if(schoolHoursValidationResult.IsError)
+                {
+                    errors.AddRange(schoolHoursValidationResult.Errors);
+                }
+
+                newCourse.SchoolHours = course.SchoolHours
+                .Select(x => new SchoolHour
+                {
+                    StartTime = x.StartTime,
+                    EndTime = x.EndTime,
+                    Day = x.Day
+                }).ToList();
+            }
+
             if(errors.Count > 0)
             {
                 return Result<Course>.Fail("One or more errors occured when trying to add the course", errors);

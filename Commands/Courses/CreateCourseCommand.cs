@@ -4,16 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using MediatR;
 using school_control_net.Entities;
+using school_control_net.Models.Courses;
 using school_control_net.Services.Interfaces;
 using school_control_net.Utils;
 
 namespace school_control_net.Commands.Courses
 {
-    public class CreateCourseCommand : IRequest<Result<Course>>
+    public class CreateCourseCommand : CourseInput, IRequest<Result<Course>>
     {
-        public string Description { get; set; }
-        public int? TeacherId { get; set; }
-        public int ClassId { get; set; }
+        
     }
 
     public class CreateCourseCommandHandler 

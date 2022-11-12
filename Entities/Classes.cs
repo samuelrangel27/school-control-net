@@ -9,6 +9,7 @@ namespace school_control_net.Entities
     {
         public string Name { get; set; }
         public int AcamedicValue { get; set; }
+        public int WeeklyHours { get; set; }
         public IList<Course> Courses { get; set; }
     }
 }

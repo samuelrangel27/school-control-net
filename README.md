@@ -12,3 +12,8 @@ If you don't have SQL server installed and you have basic experience with Docker
 * docker pull mcr.microsoft.com/mssql/server
 * docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=yourStrong(!)Password" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
 
+# Docker container
+School control is containarized using docker. For easier use of Containers with Docker I disabled https redirection in source code, such way you can run simple docker commands and avoid worrying about dev https certificate.
+Docker commands to only run api container:
+* docker build -t school-control-net:latest .
+* docker run --rm -p 8080:80 -it  --name school-control-net-api school-control-net

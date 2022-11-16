@@ -27,5 +27,21 @@ namespace school_control_net.Services
             else
                 return Result<List<ISchoolHour>>.Ok(MsgConstants.SUCCESS,hours.ToList());
         }
-    }
+
+		public Result<List<ISchoolHour>> ValidateOverlappingSchedules(IEnumerable<ISchoolHour> s1, IEnumerable<ISchoolHour> s2)
+		{
+            var overlapped = s1.Join(s2, 
+                x => x,
+                x => x,
+                (x,y) => x).ToList();
+
+            if(overlapped.Any())
+            {
+                var errors = overlapped.Select(x => $"Overlapping school hour at {x.Day} between {x.StartTime} and {x.EndTime}").ToArray();
+                return Result<List<ISchoolHour>>.Fail(MsgConstants.VALIDATION_ERRORS, errors, data: overlapped );
+            }
+			else
+                return Result<List<ISchoolHour>>.Ok(MsgConstants.SUCCESS);
+		}
+	}
 }

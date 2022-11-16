@@ -8,6 +8,7 @@ using school_control_net.Entities;
 using school_control_net.Models.Courses;
 using school_control_net.Services.Interfaces;
 using school_control_net.Utils;
+using Microsoft.EntityFrameworkCore;
 
 namespace school_control_net.Services
 {
@@ -85,5 +86,32 @@ namespace school_control_net.Services
             await context.SaveChangesAsync();
             return Result<Course>.Ok(MsgConstants.SUCCESS, newCourse);
         }
-    }
+
+		public async Task<Result<Course>> AssignTeacher(int teacherId, int courseId)
+		{
+            var errors = new List<string>();
+            var teacherResult = teacherService.GetbyId(teacherId);
+            var course = context.Courses
+                .Include(x => x.SchoolHours)
+                .FirstOrDefault(x => x.Id == courseId);
+            
+            
+            if(teacherResult.IsSuccess){
+                var schedule = teacherService.GetTeacherSchedule(teacherId);
+                var overlappedScheduleResult = schoolHourService.ValidateOverlappingSchedules(schedule.Data, course.SchoolHours);
+            }
+            else {
+                errors.Add(teacherResult.Message);
+            }
+            
+            if(errors.Any())
+                return Result<Course>.Fail(MsgConstants.VALIDATION_ERRORS);
+            
+            course.Teacher = teacherResult.Data;
+            await context.SaveChangesAsync();
+
+            return Result<Course>.Ok(MsgConstants.SUCCESS, course);
+		}
+
+	}
 }

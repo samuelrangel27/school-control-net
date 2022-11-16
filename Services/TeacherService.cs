@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using school_control_net.Commands.Teachers;
 using school_control_net.DbContexts;
 using school_control_net.Entities;
+using school_control_net.Models.SchoolHours;
 using school_control_net.Models.Teachers;
 using school_control_net.Services.Interfaces;
 using school_control_net.Utils;
@@ -38,5 +39,16 @@ namespace school_control_net.Services
                   else
                         return Result<Teacher>.Fail(string.Format(MsgConstants.NOTFOUND_WITH_ID,"Teacher",id));
             }
-      }
+
+		public Result<List<ISchoolHour>> GetTeacherSchedule(int id)
+		{
+                  var teacherSchedule = dbContext.Teachers
+                        .Where(x => x.Id == id)
+                        .SelectMany(x => x.Courses.SelectMany(c => c.SchoolHours)).ToList();
+                  return Result<List<ISchoolHour>>.Ok(MsgConstants.SUCCESS, teacherSchedule
+                        .Select(x => x as ISchoolHour)
+                        .ToList()
+                  );
+		}
+	}
 }

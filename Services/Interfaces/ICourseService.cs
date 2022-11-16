@@ -11,5 +11,6 @@ namespace school_control_net.Services.Interfaces
     public interface ICourseService
     {
         Task<Result<Course>> add(CourseInput course);
+        Task<Result<Course>> AssignTeacher(int teacherId, int courseId);
     }
 }

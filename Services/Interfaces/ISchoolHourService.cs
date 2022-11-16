@@ -10,5 +10,6 @@ namespace school_control_net.Services.Interfaces
     public interface ISchoolHourService
     {
         Result<List<ISchoolHour>> ValidateHours(IEnumerable<ISchoolHour> hours, int maxHours);
+        Result<List<ISchoolHour>> ValidateOverlappingSchedules(IEnumerable<ISchoolHour> s1, IEnumerable<ISchoolHour> s2);
     }
 }

@@ -9,9 +9,16 @@ services:
     ports:
       - '1433:1433'
   net_api:
-    build: './'
+    build: './school-control-api/'
     container_name: 'school-control-net-api'
     ports:
       - '8080:80'
     depends_on:
       - sql_db
+  angular_front:
+    build: './school-control-front/'
+    container_name: 'school-control-angular'
+    ports:
+      - '4200:80'
+    depends_on:
+      - net_api

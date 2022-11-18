@@ -1,0 +1,30 @@
+<div class="card darken-1">
+	<div class="card-content">
+		<span class="card-title">
+			List of Classes
+		</span>
+		<table mat-table class="striped" [dataSource]="classes">
+			<ng-container matColumnDef="name">
+				<th mat-header-cell *matHeaderCellDef>Name</th>
+				<td mat-cell *matCellDef="let element"> {{ element.name }} </td>
+			</ng-container>
+
+			<ng-container matColumnDef="academicValue">
+				<th mat-header-cell *matHeaderCellDef>Academic Value</th>
+				<td mat-cell *matCellDef="let element"> {{ element.acamedicValue }} </td>
+			</ng-container>
+
+			<ng-container matColumnDef="weeklyHours">
+				<th mat-header-cell *matHeaderCellDef>Weekly Hours</th>
+				<td mat-cell *matCellDef="let element"> {{ element.weeklyHours }} </td>
+			</ng-container>
+
+			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+			<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+		</table>
+	</div>
+
+	<div class="card-action grey lighten-4">
+		<a href="/add-class" class="blue-text text-darken-2">Add new class</a>
+	</div>
+</div>

@@ -3,14 +3,37 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MenuComponent } from './common/menu/menu.component';
+import { MatCardModule} from '@angular/material/card'
+import { MatSidenavModule} from '@angular/material/sidenav'
+import { MatListModule} from '@angular/material/list';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatIconModule} from '@angular/material/icon'
+import { MatToolbarModule} from '@angular/material/toolbar';
+import { MatTableModule } from '@angular/material/table';
+import { ClassesComponent } from './components/classes/classes.component';
+import { AddClassComponent } from './components/add-class/add-class.component';
+import { ODataModule } from 'angular-odata';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent,
+    ClassesComponent,
+    AddClassComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    MatCardModule,
+    MatSidenavModule,
+    MatListModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatTableModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    ODataModule.forRoot({ serviceRootUrl: environment.odataUrl})
   ],
   providers: [],
   bootstrap: [AppComponent]

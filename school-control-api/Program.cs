@@ -35,6 +35,14 @@ builder.Services.AddScoped<ISchoolCycleService,SchoolCycleService>();
 builder.Services.AddScoped<ICourseService,CourseService>();
 builder.Services.AddScoped<ISchoolHourService,SchoolHourService>();
 
+builder.Services.AddCors(options => {
+    options.AddPolicy("allowCORS", policy => {
+        policy.AllowAnyOrigin();
+        policy.AllowAnyMethod();
+        policy.AllowAnyHeader();
+    });
+});
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())

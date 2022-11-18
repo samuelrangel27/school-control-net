@@ -15,6 +15,9 @@ import { ClassesComponent } from './components/classes/classes.component';
 import { AddClassComponent } from './components/add-class/add-class.component';
 import { ODataModule } from 'angular-odata';
 import { environment } from 'src/environments/environment';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,9 @@ import { environment } from 'src/environments/environment';
     MatTableModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    ReactiveFormsModule,
+    HttpClientModule,
     ODataModule.forRoot({ serviceRootUrl: environment.odataUrl})
   ],
   providers: [],

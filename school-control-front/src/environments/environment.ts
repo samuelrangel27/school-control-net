@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  rootUrl: 'http://localhost:5272/api/',
+  rootUrl: '/api/',
   odataUrl: '/odata/'
 };
 

@@ -1,1 +1,38 @@
-<p>add-class works!</p>
+<form action="" [formGroup]="classForm">
+	<div class="card darken-1">
+		<div class="card-content">
+			<span class="card-title">
+				New Class
+			</span>
+			<div class="row">
+				<div class="row">
+					<div class="input-field col s12">
+						<input id="name" type="text" class="validate" formControlName="name">
+						<label for="name">Class Name</label>
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s6">
+						<input id="academicValue" type="text" class="validate" formControlName="academicValue">
+						<label for="academicValue">Academic Value</label>
+					</div>
+					<div class="input-field col s6">
+						<input id="weeklyHours" type="text" class="validate" formControlName="weeklyHours">
+						<label for="weeklyHours">Weekly hours</label>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card-action grey lighten-4">
+			<div class="row">
+				<div class="col">
+					<button class="btn waves-effect waves-light" type="submit" (click)="cancel()">Cancel</button>
+				</div>
+				<div class="col">
+					<button [disabled]="!classForm.valid" class="btn waves-effect waves-light" type="submit" (click)="save()">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

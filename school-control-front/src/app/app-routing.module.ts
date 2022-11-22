@@ -5,7 +5,8 @@ import { ClassesComponent } from './components/classes/classes.component';
 
 const routes: Routes = [
   { path:'classes', component: ClassesComponent},
-  { path:'add-class', component: AddClassComponent}
+  { path:'add-class', component: AddClassComponent},
+  { path: 'classes/:id/edit', component: AddClassComponent }
 ];
 
 @NgModule({

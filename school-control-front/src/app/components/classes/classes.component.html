@@ -3,25 +3,20 @@
 		<span class="card-title">
 			List of Classes
 		</span>
-		<table mat-table class="striped" [dataSource]="classes">
-			<ng-container matColumnDef="name">
-				<th mat-header-cell *matHeaderCellDef>Name</th>
-				<td mat-cell *matCellDef="let element"> {{ element.name }} </td>
-			</ng-container>
-
-			<ng-container matColumnDef="academicValue">
-				<th mat-header-cell *matHeaderCellDef>Academic Value</th>
-				<td mat-cell *matCellDef="let element"> {{ element.acamedicValue }} </td>
-			</ng-container>
-
-			<ng-container matColumnDef="weeklyHours">
-				<th mat-header-cell *matHeaderCellDef>Weekly Hours</th>
-				<td mat-cell *matCellDef="let element"> {{ element.weeklyHours }} </td>
-			</ng-container>
-
-			<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-			<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-		</table>
+		<ag-grid-angular
+		style="width: 100%; height: 600px"
+		class="ag-theme-alpine"
+		[columnDefs]="columnDefs"
+		[defaultColDef]="defaultColDef"
+		[rowData]="classes"
+		[rowSelection]="'multiple'"
+		[animateRows]="true"
+		(cellClicked)="onCellClicked($event)"
+		(gridReady)="onGridReady($event)"
+		></ag-grid-angular>
+		<mat-paginator [pageSize]="10"
+			[length]="totalCount"
+			(page)="getData($event)"></mat-paginator>
 	</div>
 
 	<div class="card-action grey lighten-4">

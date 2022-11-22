@@ -16,5 +16,9 @@ namespace school_control_net.Controllers
             [HttpPost]
             public async Task<ActionResult> post(CreateClassCommand command) 
                   => await ProcessCommandAsync(command);
+
+            [HttpPut]
+            public async Task<ActionResult> put(UpdateClassCommand command) 
+                  => await ProcessCommandAsync(command);
       }
 }

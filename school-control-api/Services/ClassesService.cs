@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using school_control_net.Commands.Classes;
 using school_control_net.DbContexts;
 using school_control_net.Entities;
+using school_control_net.Models.Classes;
+using school_control_net.Models.Courses;
 using school_control_net.Services.Interfaces;
 using school_control_net.Utils;
 
@@ -22,7 +24,8 @@ namespace school_control_net.Services
             {
                   var newClass = new Classes{
                         Name = classInput.Name,
-                        AcamedicValue = classInput.AcamedicValue
+                        AcademicValue = classInput.AcademicValue,
+                        WeeklyHours = classInput.WeeklyHours
                   };
                   await dbContext.Classes.AddAsync(newClass);
                   await dbContext.SaveChangesAsync();
@@ -37,5 +40,19 @@ namespace school_control_net.Services
                   else
                         return Result<Classes>.Fail(string.Format(MsgConstants.NOTFOUND_WITH_ID, "Class", id));
             }
-      }
+
+		public async Task<Result<Classes>> update(UpdateClassInput classInput)
+		{
+			var classesResult = this.GetById(classInput.Id);
+                  if(classesResult.IsSuccess)
+                  {
+                        classesResult.Data.Name = classInput.Name;
+                        classesResult.Data.AcademicValue = classInput.AcademicValue;
+                        classesResult.Data.WeeklyHours = classInput.WeeklyHours;
+                        dbContext.Classes.Update(classesResult.Data);
+                        await dbContext.SaveChangesAsync();
+                  }
+                  return classesResult;
+		}
+	}
 }

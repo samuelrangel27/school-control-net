@@ -2,24 +2,24 @@
 	<div class="card darken-1">
 		<div class="card-content">
 			<span class="card-title">
-				New Class
+				{{title}}
 			</span>
 			<div class="row">
 				<div class="row">
-					<div class="input-field col s12">
-						<input id="name" type="text" class="validate" formControlName="name">
-						<label for="name">Class Name</label>
-					</div>
+					<mat-form-field class="col s12">
+						<mat-label>Class name</mat-label>
+						<input matInput formControlName="name">
+					</mat-form-field>
 				</div>
 				<div class="row">
-					<div class="input-field col s6">
-						<input id="academicValue" type="text" class="validate" formControlName="academicValue">
-						<label for="academicValue">Academic Value</label>
-					</div>
-					<div class="input-field col s6">
-						<input id="weeklyHours" type="text" class="validate" formControlName="weeklyHours">
-						<label for="weeklyHours">Weekly hours</label>
-					</div>
+					<mat-form-field class="col s6">
+						<mat-label>Academic value</mat-label>
+						<input matInput type="text" formControlName="academicValue">
+					</mat-form-field>
+					<mat-form-field class="col s6">
+						<mat-label>Weekly hours</mat-label>
+						<input matInput type="text" formControlName="weeklyHours">
+					</mat-form-field>
 				</div>
 			</div>
 		</div>

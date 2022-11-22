@@ -11,6 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { MatIconModule} from '@angular/material/icon'
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { ClassesComponent } from './components/classes/classes.component';
 import { AddClassComponent } from './components/add-class/add-class.component';
 import { ODataModule } from 'angular-odata';
@@ -18,6 +21,7 @@ import { environment } from 'src/environments/environment';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { AgGridModule } from 'ag-grid-angular';
 
 @NgModule({
   declarations: [
@@ -34,14 +38,20 @@ import { ToastrModule } from 'ngx-toastr';
     MatIconModule,
     MatToolbarModule,
     MatTableModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
+    MatInputModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    AgGridModule,
     ToastrModule.forRoot(),
     ReactiveFormsModule,
     HttpClientModule,
     ODataModule.forRoot({ serviceRootUrl: environment.odataUrl})
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

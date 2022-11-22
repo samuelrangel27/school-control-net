@@ -1,6 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
-@import "../node_modules/materialize-css/sass/materialize.scss";
+@import "../node_modules/materialize-css/sass/components/color-variables";
+@import "../node_modules/materialize-css/sass/components/variables";
+@import "../node_modules/materialize-css/sass/components/global";
+@import "../node_modules/materialize-css/sass/components/color-classes";
+@import "../node_modules/materialize-css/sass/components/navbar";
+@import "../node_modules/materialize-css/sass/components/grid";
+@import "../node_modules/materialize-css/sass/components/cards";
+@import "../node_modules/materialize-css/sass/components/buttons";
 @import "./spaces.scss";
 @import 'ngx-toastr/toastr';
+@import 'ag-grid-community/dist/styles/ag-grid.css';
+@import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

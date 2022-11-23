@@ -1,0 +1,46 @@
+<form action="" [formGroup]="studentForm">
+	<div class="card darken-1">
+		<div class="card-content">
+			<span class="card-title">
+				{{title}}
+			</span>
+			<div class="row">
+				<div class="row">
+					<mat-form-field class="col s12">
+						<mat-label>Student name</mat-label>
+						<input matInput formControlName="name">
+					</mat-form-field>
+				</div>
+				<div class="row">
+					<mat-form-field class="col s6">
+						<mat-label>Address</mat-label>
+						<input matInput type="text" formControlName="address">
+					</mat-form-field>
+					<mat-form-field class="col s6">
+						<mat-label>Date of Birth</mat-label>
+						<input matInput [matDatepicker]="datepicker" formControlName="dateOfBirth">
+						<mat-hint>MM/DD/YYYY</mat-hint>
+						<mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+						<mat-datepicker #datepicker>
+							<mat-datepicker-actions>
+							  <button mat-button matDatepickerCancel>Cancel</button>
+							  <button mat-raised-button color="primary" matDatepickerApply>Apply</button>
+							</mat-datepicker-actions>
+						  </mat-datepicker>
+					</mat-form-field>
+				</div>
+			</div>
+		</div>
+
+		<div class="card-action grey lighten-4">
+			<div class="row">
+				<div class="col">
+					<button class="btn waves-effect waves-light" type="submit" (click)="cancel()">Cancel</button>
+				</div>
+				<div class="col">
+					<button [disabled]="!studentForm.valid" class="btn waves-effect waves-light" type="submit" (click)="save()">Save</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

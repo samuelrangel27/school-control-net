@@ -1,0 +1,29 @@
+<div class="card darken-1">
+	<div class="card-content">
+		<span class="card-title">
+			List of Students
+		</span>
+		<ag-grid-angular
+		style="width: 100%; height: 600px"
+		class="ag-theme-alpine"
+		[columnDefs]="columnDefs"
+		[defaultColDef]="defaultColDef"
+		[rowData]="students"
+		[rowSelection]="'multiple'"
+		[animateRows]="true"
+		(cellClicked)="onCellClicked($event)"
+		(gridReady)="onGridReady($event)"
+		></ag-grid-angular>
+		<mat-paginator [pageSize]="10"
+			[length]="totalCount"
+			(page)="getData($event)"></mat-paginator>
+	</div>
+
+	<div class="card-action grey lighten-4">
+		<a href="/add-student" class="white-text">
+			<span class="btn waves-effect waves-light">
+				Add new student
+			</span>
+		</a>
+	</div>
+</div>

@@ -12,6 +12,7 @@ import { MatIconModule} from '@angular/material/icon'
 import { MatToolbarModule} from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule, MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ClassesComponent } from './components/classes/classes.component';
@@ -22,13 +23,18 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
 import { AgGridModule } from 'ag-grid-angular';
+import { StudentsComponent } from './components/students/students.component';
+import { AddStudentComponent } from './components/students/add-student/add-student.component';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     ClassesComponent,
-    AddClassComponent
+    AddClassComponent,
+    StudentsComponent,
+    AddStudentComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +47,8 @@ import { AgGridModule } from 'ag-grid-angular';
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AgGridModule,

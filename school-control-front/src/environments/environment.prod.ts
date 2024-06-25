@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  rootUrl: 'http://localhost:5272/api/',
-  odataUrl: 'http://localhost:5272/odata/'
+  rootUrl: 'http://localhost:8080/api/',
+  odataUrl: 'http://localhost:8080/odata/'
 };

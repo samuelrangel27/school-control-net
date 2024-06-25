@@ -37,7 +37,7 @@ builder.Services.AddScoped<ISchoolHourService,SchoolHourService>();
 
 builder.Services.AddCors(options => {
     options.AddPolicy("allowCORS", policy => {
-        policy.AllowAnyOrigin();
+        policy.WithOrigins(builder.Configuration.GetValue<string>("CORS:AllowedOrigins"));
         policy.AllowAnyMethod();
         policy.AllowAnyHeader();
     });
@@ -60,7 +60,7 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 // app.UseHttpsRedirection();
-
+app.UseCors("allowCORS");
 app.UseAuthorization();
 
 app.MapControllers();

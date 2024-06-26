@@ -28,12 +28,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddMediatR(typeof(CreateClassCommand).Assembly);
 builder.Services.AddDbContext<SchoolDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("SchoolConnection")));
 
-builder.Services.AddScoped<IClassesService,ClassesService>();
-builder.Services.AddScoped<ITeacherService,TeacherService>();
-builder.Services.AddScoped<IStudentService,StudentService>();
-builder.Services.AddScoped<ISchoolCycleService,SchoolCycleService>();
-builder.Services.AddScoped<ICourseService,CourseService>();
-builder.Services.AddScoped<ISchoolHourService,SchoolHourService>();
+builder.Services.RegisterServices();
 
 builder.Services.AddCors(options => {
     options.AddPolicy("allowCORS", policy => {

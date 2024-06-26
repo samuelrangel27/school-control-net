@@ -8,6 +8,7 @@ using school_control_net.Utils;
 
 namespace school_control_net.Services
 {
+    [ScopedRegistration]
     public class SchoolHourService : ISchoolHourService
     {
         public Result<List<ISchoolHour>> ValidateHours(IEnumerable<ISchoolHour> hours, int maxHours)

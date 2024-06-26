@@ -11,6 +11,7 @@ using school_control_net.Utils;
 
 namespace school_control_net.Services
 {
+      [ScopedRegistration]
       public class StudentService : IStudentService
       {
             private readonly SchoolDbContext dbContext;

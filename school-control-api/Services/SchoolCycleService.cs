@@ -10,6 +10,7 @@ using school_control_net.Utils;
 
 namespace school_control_net.Services
 {
+    [ScopedRegistration]
     public class SchoolCycleService : ISchoolCycleService
     {
         private readonly SchoolDbContext context;

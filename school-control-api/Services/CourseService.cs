@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace school_control_net.Services
 {
+    [ScopedRegistration]
     public class CourseService : ICourseService
     {
         private readonly SchoolDbContext context;
